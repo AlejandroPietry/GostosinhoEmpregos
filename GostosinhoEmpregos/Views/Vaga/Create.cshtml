@@ -1,0 +1,36 @@
+﻿@model GostosinhoEmpregos.Models.VagaViewModel
+
+
+<form asp-controller="Vaga" asp-action="SalvarVaga" method="post">
+    <div class="row">
+        <label asp-for="Funcao"></label>
+        <input type="text" asp-for="Funcao" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="Descricao"></label>
+        <textarea class="form-control" asp-for="Descricao"></textarea>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <label asp-for="DataValidade"></label>
+            <input type="date" asp-for="DataValidade" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Cidade"></label>
+            <input type="text" asp-for="Cidade" class="form-control" />
+        </div>
+    </div>
+    <p>Dados do contratante:</p>
+    <div class="row mt-2">
+        <div class="col">
+            <label asp-for="NomeResponsavel"></label>
+            <input type="text" asp-for="NomeResponsavel" class="form-control" />
+        </div>
+        <div class="col">
+            <label asp-for="Cpf"></label>
+            <input type="text" asp-for="Cpf" class="form-control" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Enviar Vaga</button>
+</form>
