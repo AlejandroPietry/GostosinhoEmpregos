@@ -21,7 +21,7 @@ namespace GostosinhoEmpregos.Models
         public string Cidade { get; set; }
         [DisplayName("Cpf")]
         public string Cpf { get; set; }
-        [Required]
+
         [DisplayName("Nome do responsavel")]
         public string NomeResponsavel { get; set; }
     }

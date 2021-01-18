@@ -7,12 +7,12 @@ namespace GostosinhoEmpregos.Controllers
 {
     public class VagaController : Controller
     {
-        // Vaga/Create
+        //GET /Vaga/Create
         public IActionResult Create()
         {
             return View();
         }
-
+        //GET /Vaga/VerVaga
         public IActionResult VerVaga(int idVaga)
         {
             ViewBag.VagaDados = null;
@@ -26,7 +26,7 @@ namespace GostosinhoEmpregos.Controllers
                 vaga.DataValidade = DateTime.Now.AddDays(15);
 
             Vaga.Insert(vaga.Funcao, vaga.Descricao, vaga.DataValidade, vaga.Cidade, decimal.Parse(vaga.Cpf),vaga.NomeResponsavel);
-            return Redirect("~/Home/Index");
+            return Redirect("~/Home");
         }
     }
 }

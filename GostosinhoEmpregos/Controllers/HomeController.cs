@@ -1,4 +1,5 @@
-﻿using GostosinhoEmpregos.Models;
+﻿using GostosinhoEmpregos.BLL.BLL.master;
+using GostosinhoEmpregos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,8 +19,11 @@ namespace GostosinhoEmpregos.Controllers
             _logger = logger;
         }
 
+        //GET /home
         public IActionResult Index()
         {
+            ViewBag.ListaDeVagas = Vaga.RecuperarVagasNovas();
+
             return View();
         }
 

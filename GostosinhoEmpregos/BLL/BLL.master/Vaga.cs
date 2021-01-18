@@ -26,6 +26,8 @@ namespace GostosinhoEmpregos.BLL.BLL.master
         private static string SP_INSERT = @"
             INSERT INTO dbo.Vaga(Funcao, Descricao, DataCadastro, DataValidade, Cidade,Cpf,NomeResponsavel,Flg_Vaga_Inativa)
             VALUES(@funcao, @descricao, GETDATE(),@dataValidade, @cidade, @cpf, @nomeResponsavel, 0)";
+
+        private static string SP_SELECT_ULTIMAS_VAGAS = @"SELECT TOP 3 * from dbo.Vaga ORDER BY ID DESC";
         #endregion
 
         #region metodos
@@ -48,6 +50,42 @@ namespace GostosinhoEmpregos.BLL.BLL.master
             }
 
         }
+
+        /// <summary>
+        /// Metodo que retorna as ultimas 3 vagas publicadas.
+        /// </summary>
+        /// <remarks>Alejadnro Pietry</remarks>
+        public static List<Vaga> RecuperarVagasNovas()
+        {
+            List<Vaga> listaVagas = new List<Vaga>();
+
+            using(SqlConnection conn = new SqlConnection(Constants.Conn_DB))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = SP_SELECT_ULTIMAS_VAGAS;
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                
+                while (dr.Read())
+                {
+                    listaVagas.Add(new Vaga
+                    {
+                        Id = int.Parse(dr["Id"].ToString()),
+                        Funcao = dr["Funcao"].ToString(),
+                        Descricao = dr["Descricao"].ToString(),
+                        DataCadastro = DateTime.Parse(dr["DataCadastro"].ToString()),
+                        Cidade = dr["Cidade"].ToString()
+                    });
+                }
+                conn.Close();
+            }
+
+            return listaVagas;
+        }
+
+
+
+
         #endregion
     }
 }
