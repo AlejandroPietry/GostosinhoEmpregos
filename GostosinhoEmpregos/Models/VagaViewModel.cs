@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GostosinhoEmpregos.Models
 {
@@ -11,18 +7,31 @@ namespace GostosinhoEmpregos.Models
     {
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; }
-        [DisplayName("Funcao")]
+        [Display(Name ="Funcao")]
+        [Required(ErrorMessage = "Por favor insira a funcao")]
+        [StringLength(100,ErrorMessage ="Erro na quantidade de caracteres!",  MinimumLength = 3)]
         public string Funcao { get; set; }
-        [DisplayName("Descrição")]
+
+        [Display(Name = "Descrição")]
+        [StringLength(3000, ErrorMessage = "Erro na quantidade de caracteres!", MinimumLength = 50)]
         public string Descricao { get; set; }
-        [DisplayName("Data de Validade")]
+
+        [Display(Name = "Data de validade")]
         public DateTime DataValidade { get; set; }
-        [DisplayName("Cidade")]
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Cidade é obrigatorio")]
+        [Display(Name = "Cidade")]
         public string Cidade { get; set; }
-        [DisplayName("Cpf")]
+
+        [Required (ErrorMessage = "CPF obrigatório", AllowEmptyStrings = false)]
+        [Display(Name = "Cpf")]
+        [DisplayFormat(DataFormatString = "{0:000.000.000-00}", ApplyFormatInEditMode = true)]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Cpf incorreto")]
         public string Cpf { get; set; }
 
-        [DisplayName("Nome do responsavel")]
+        [Required(ErrorMessage = "O nome do responsavel pela vaga é obrigatorio", AllowEmptyStrings = false)]
+        [Display(Name = "Nome do responsavel")]
+        [StringLength(100,ErrorMessage = "Erro ao preencher o nome"  ,MinimumLength = 1)]
         public string NomeResponsavel { get; set; }
     }
 }

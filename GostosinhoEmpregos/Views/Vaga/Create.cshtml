@@ -1,10 +1,13 @@
-﻿@model GostosinhoEmpregos.Models.VagaViewModel
+﻿@model VagaViewModel
 
 
-<form asp-controller="Vaga" asp-action="SalvarVaga" method="post">
+<form asp-controller="Vaga" asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <div class="row">
         <label asp-for="Funcao"></label>
         <input type="text" asp-for="Funcao" class="form-control" />
+        <span asp-validation-for="Funcao" class="text-danger"></span>
     </div>
     <div class="row">
         <label asp-for="Descricao"></label>
@@ -18,6 +21,7 @@
         <div class="col">
             <label asp-for="Cidade"></label>
             <input type="text" asp-for="Cidade" class="form-control" />
+            <span asp-validation-for="Cidade" class="text-danger"></span>
         </div>
     </div>
     <p>Dados do contratante:</p>
@@ -25,10 +29,12 @@
         <div class="col">
             <label asp-for="NomeResponsavel"></label>
             <input type="text" asp-for="NomeResponsavel" class="form-control" />
+            <span asp-validation-for="NomeResponsavel" class="text-danger"></span>
         </div>
         <div class="col">
             <label asp-for="Cpf"></label>
             <input type="text" asp-for="Cpf" class="form-control" />
+            <span asp-validation-for="Cpf" class="text-danger"></span>
         </div>
     </div>
 

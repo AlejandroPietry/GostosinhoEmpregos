@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="~/css/site.css" />
 
 <div class="text-center">
     <h1 class="display-4">Veja nossas vagas:</h1>
@@ -12,12 +13,12 @@
     {
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">@vaga.Funcao</h5>
+                <h5 class="card-title">@vaga.Funcao - @vaga.Cidade</h5>
                 <p class="card-text">@vaga.Descricao</p>
                 <p class="card-text"> <small class="text-muted">Publicado dia @vaga.DataCadastro</small></p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary">Acessar vaga</button>
+                <a href="~/Vaga/VerVaga?idVaga=@vaga.Id" class="btn btn-primary">Acessar Vaga</a>   
             </div>
         </div>
     }
