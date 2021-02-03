@@ -7,18 +7,23 @@
     <h1 class="display-4">Veja nossas vagas:</h1>
 </div>
 
-
-<div class="card-deck">
+<!--Dei um grau na home, agora mostra os cards bem bonitinhos-->
+<!--Ta mostrando só 9 vagas pois eu coloquei um top na query.-->
+<div class="container-fluid d-flex flex-wrap">
     @foreach (var vaga in ViewBag.ListaDeVagas)
     {
-        <div class="card">
+        <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">@vaga.Funcao - @vaga.Cidade</h5>
                 <p class="card-text">@vaga.Descricao</p>
                 <p class="card-text"> <small class="text-muted">Publicado dia @vaga.DataCadastro</small></p>
             </div>
             <div class="card-footer">
-                <a href="~/Vaga/VerVaga?idVaga=@vaga.Id" class="btn btn-primary">Acessar Vaga</a>   
+                <!--Sobre o Url.Action: O primeiro parametro é o metodo, seguido da Controler onde ta o metodo e depois o 
+                    parametro do metodo que nesse caso é o idVaga, se tiver mais parametro é so colocar dentro do new-->
+                <a href="@Url.Action("VerVaga","Vaga", new {idVaga = vaga.Id })">
+                    <button class="btn btn-primary">Detalhes</button>
+                </a>   
             </div>
         </div>
     }

@@ -27,7 +27,7 @@ namespace GostosinhoEmpregos.BLL.BLL.master
             INSERT INTO dbo.Vaga(Funcao, Descricao, DataCadastro, DataValidade, Cidade,Cpf,NomeResponsavel,Flg_Vaga_Inativa)
             VALUES(@funcao, @descricao, GETDATE(),@dataValidade, @cidade, @cpf, @nomeResponsavel, 0)";
 
-        private static string SP_SELECT_ULTIMAS_VAGAS = @"SELECT TOP 3 * from dbo.Vaga ORDER BY ID DESC";
+        private static string SP_SELECT_ULTIMAS_VAGAS = @"SELECT top 9 * from dbo.Vaga ORDER BY ID DESC";
 
         private static string SP_SELECT_VAGA_POR_ID = @"SELECT * from dbo.Vaga WHERE ID = @id";
         #endregion
@@ -74,7 +74,7 @@ namespace GostosinhoEmpregos.BLL.BLL.master
                     {
                         Id = int.Parse(dr["Id"].ToString()),
                         Funcao = dr["Funcao"].ToString() ,
-                        Descricao = $"{dr["Descricao"].ToString().Substring(0, 50)} ...",
+                        Descricao = dr["Descricao"].ToString().Length > 50? dr["Descricao"].ToString().Substring(0,49) + "...": dr["Descricao"].ToString(),
                         DataCadastro = DateTime.Parse(dr["DataCadastro"].ToString()),
                         Cidade = dr["Cidade"].ToString().ToUpper()
                     });

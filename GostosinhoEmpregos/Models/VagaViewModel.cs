@@ -30,8 +30,8 @@ namespace GostosinhoEmpregos.Models
         public string Cpf { get; set; }
 
         [Required(ErrorMessage = "O nome do responsavel pela vaga é obrigatorio", AllowEmptyStrings = false)]
-        [Display(Name = "Nome do responsavel")]
-        [StringLength(100,ErrorMessage = "Erro ao preencher o nome"  ,MinimumLength = 1)]
+        [Display(Name = "Nome Completo do responsavel")]
+        [StringLength(100,ErrorMessage = "Erro ao preencher o nome"  ,MinimumLength = 5)]
         public string NomeResponsavel { get; set; }
     }
 }
